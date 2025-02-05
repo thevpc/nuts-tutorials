@@ -1,0 +1,17 @@
+lib/lib-integration-example/target
+naf/custom-cli-project-a/target
+naf/custom-cli-project-b/target
+naf/custom-cli-project-c/target
+naf/remote-self-call-example/target
+naf/spring-boot-integration-hello-world-example/target
+naf/spring-boot-integration-install-events-example/target
+ugly-jar-projects/assembly-project/target
+ugly-jar-projects/dependency-project/target
+ugly-jar-projects/onejar-project/target
+ugly-jar-projects/shade-project/target
+ugly-jar-projects/springboot-project/target
+ugly-jar-projects/simple-project/target
+/naf/spring-boot-integration-hello-world-example/.mvn/wrapper/maven-wrapper.properties
+/naf/spring-boot-integration-install-events-example/.mvn/wrapper/maven-wrapper.jar
+/naf/spring-boot-integration-install-events-example/.mvn/wrapper/maven-wrapper.properties
+/naf/spring-boot-integration-install-events-example/.mvn/wrapper/MavenWrapperDownloader.java
