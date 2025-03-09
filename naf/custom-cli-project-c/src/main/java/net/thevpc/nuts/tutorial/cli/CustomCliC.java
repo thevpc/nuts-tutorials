@@ -19,7 +19,7 @@ import net.thevpc.nuts.util.NRef;
 public class CustomCliC implements NApplication {
 
     public static void main(String[] args) {
-        new CustomCliC().runAndExit(args);
+        new CustomCliC().run(NAppRunOptions.ofExit(args));
     }
 
     @Override
