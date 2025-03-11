@@ -29,7 +29,7 @@ import java.util.List;
 public class RemoteSelfCallApp implements NApplication {
 
     public static void main(String[] args) {
-        new RemoteSelfCallApp().run(NAppRunOptions.ofExit(args));
+        new RemoteSelfCallApp().main(NMainArgs.ofExit(args));
     }
 
     private static class Options {

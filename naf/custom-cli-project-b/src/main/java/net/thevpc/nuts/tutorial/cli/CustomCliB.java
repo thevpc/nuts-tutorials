@@ -18,7 +18,7 @@ import net.thevpc.nuts.cmdline.NCmdLine;
 public class CustomCliB implements NApplication {
 
     public static void main(String[] args) {
-        new CustomCliB().run(NAppRunOptions.ofExit(args));
+        new CustomCliB().main(NMainArgs.ofExit(args));
     }
 
     @Override

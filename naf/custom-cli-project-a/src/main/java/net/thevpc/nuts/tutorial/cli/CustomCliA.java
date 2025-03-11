@@ -19,7 +19,7 @@ import net.thevpc.nuts.cmdline.NCmdLineRunner;
 public class CustomCliA implements NApplication {
 
     public static void main(String[] args) {
-        new CustomCliA().run(NAppRunOptions.ofExit(args));
+        new CustomCliA().main(NMainArgs.ofExit(args));
     }
 
     @Override
