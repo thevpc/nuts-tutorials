@@ -3,10 +3,7 @@ package net.thevpc.nuts.tutorial.cli;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.thevpc.nuts.NApp;
-import net.thevpc.nuts.NApplication;
-import net.thevpc.nuts.NOut;
-import net.thevpc.nuts.NSession;
+import net.thevpc.nuts.*;
 import net.thevpc.nuts.util.NMsg;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
@@ -18,7 +15,7 @@ import net.thevpc.nuts.cmdline.NCmdLine;
 public class CustomCliB implements NApplication {
 
     public static void main(String[] args) {
-        new CustomCliB().main(NMainArgs.ofExit(args));
+        new CustomCliB().main(NMainArgs.of(args));
     }
 
     @Override
