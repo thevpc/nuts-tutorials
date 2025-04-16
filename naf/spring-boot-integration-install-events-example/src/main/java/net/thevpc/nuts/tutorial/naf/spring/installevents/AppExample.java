@@ -69,7 +69,7 @@ public class AppExample implements NApplication {
                 }
                 default: {
                     if (a.isNonOption()) {
-                        nonOptions.add(cmd.next().flatMap(NLiteral::asString).get());
+                        nonOptions.add(cmd.next().get().getImage());
                     } else {
                         // this is an unsupported options!
                         cmd.throwUnexpectedArgument();
