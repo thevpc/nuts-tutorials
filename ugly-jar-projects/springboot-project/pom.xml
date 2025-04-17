@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.thevpc.nuts.tutorial</groupId>
     <artifactId>springboot-project</artifactId>
@@ -11,11 +10,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.10</version>
-        </dependency>
+        <dependency><groupId>ch.qos.logback</groupId><artifactId>logback-classic</artifactId><version>1.2.10</version></dependency>
     </dependencies>
     <name>Nuts Community Tutorial Documentation :: Ugly :: Spring Boot</name>
     
