@@ -92,7 +92,7 @@ public class RemoteSelfCallApp implements NApplication {
                             NExecCmd.of()
                                     // host is ion the form
                                     // ssh://user@machine
-                                    .setTarget(options.host)
+                                    .setConnexionString(options.host)
                                     .setCommand(
                                             NStringUtils.toStringOrEmpty(NApp.of().getId().orNull()),
                                             "--on-call-self"

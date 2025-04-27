@@ -32,7 +32,7 @@ public class ExamplesOfExec {
 
     public void executeSshCommand() {
         String result = NExecCmd.of()
-                .setTarget("ssh://remoteUserName:remoteUserPassword@192.168.1.98")
+                .setConnexionString("ssh://remoteUserName:remoteUserPassword@192.168.1.98")
                 .addCommand("hostname", "-I")
                 .system()
                 .getGrabbedAllString();
@@ -44,7 +44,7 @@ public class ExamplesOfExec {
     public void executeSshSudoCommand() {
         NOut.println("Example of ## Exec ssh command ##");
         String result = NExecCmd.of()
-                .setTarget("ssh://remoteUserName:remoteUserPassword@192.168.1.98")
+                .setConnexionString("ssh://remoteUserName:remoteUserPassword@192.168.1.98")
                 .addCommand("hostname", "-I")
                 .addExecutorOptions("--!sudo-prompt")
                 .system()
