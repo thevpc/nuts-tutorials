@@ -15,3 +15,4 @@ ugly-jar-projects/simple-project/target
 /naf/spring-boot-integration-install-events-example/.mvn/wrapper/maven-wrapper.jar
 /naf/spring-boot-integration-install-events-example/.mvn/wrapper/maven-wrapper.properties
 /naf/spring-boot-integration-install-events-example/.mvn/wrapper/MavenWrapperDownloader.java
+/naf/custom-cli-project-d/target/

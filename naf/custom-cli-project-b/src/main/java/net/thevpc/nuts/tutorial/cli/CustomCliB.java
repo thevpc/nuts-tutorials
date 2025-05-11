@@ -7,6 +7,8 @@ import net.thevpc.nuts.*;
 import net.thevpc.nuts.util.NMsg;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
+import net.thevpc.nuts.cmdline.NCmdLineContext;
+import net.thevpc.nuts.cmdline.NCmdLineRunner;
 
 /**
  *
@@ -20,45 +22,42 @@ public class CustomCliB implements NApplication {
 
     @Override
     public void run() {
-        NCmdLine cmdLine = NApp.of().getCmdLine();
-        boolean boolOption = false;
-        String stringOption = null;
-        List<String> others = new ArrayList<>();
-        NArg a;
-        while (cmdLine.hasNext()) {
-            a = cmdLine.peek().get();
-            if (a.isOption()) {
-                switch (a.key()) {
-                    case "-o":
-                    case "--option": {
-                        a = cmdLine.nextFlag().get();
+        NApp.of().processCmdLine(new NCmdLineRunner() {
+            boolean noMoreOptions = false;
+            boolean clean = false;
+            List<String> params = new ArrayList<>();
+
+            @Override
+            public boolean nextOption(NArg option, NCmdLine cmdLine, NCmdLineContext context) {
+                if (!noMoreOptions) {
+                    return false;
+                }
+                switch (option.key()) {
+                    case "-c":
+                    case "--clean": {
+                        NArg a = cmdLine.nextFlag().get();
                         if (a.isEnabled()) {
-                            boolOption = a.getValue().asBoolean().get();
+                            clean = a.getBooleanValue().get();
                         }
-                        break;
-                    }
-                    case "-n":
-                    case "--name": {
-                        a = cmdLine.nextEntry().get();
-                        if (a.isEnabled()) {
-                            stringOption = a.getValue().asString().get();
-                        }
-                        break;
-                    }
-                    default: {
-                        NSession.of().configureLast(cmdLine);
+                        return true;
                     }
                 }
-            } else {
-                others.add(cmdLine.next().get().toString());
+                return false;
             }
-        }
-        // test if application is running in exec mode
-        // (and not in autoComplete mode)
-        if (cmdLine.isExecMode()) {
-            //do the good staff here
-            NOut.println(NMsg.ofC("boolOption=%s stringOption=%s others=%s", boolOption, stringOption, others));
-        }
+
+            @Override
+            public boolean nextNonOption(NArg nonOption, NCmdLine cmdLine, NCmdLineContext context) {
+                params.add(cmdLine.next().get().toString());
+                return true;
+            }
+
+            @Override
+            public void run(NCmdLine cmdLine, NCmdLineContext context) {
+                if (clean) {
+                    NOut.println("cleaned!");
+                }
+            }
+        });
     }
 
 }

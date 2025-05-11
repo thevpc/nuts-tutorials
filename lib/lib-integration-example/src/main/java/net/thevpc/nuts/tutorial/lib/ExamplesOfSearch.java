@@ -12,7 +12,7 @@ public class ExamplesOfSearch {
         NOut.println("Example of ## Search ##");
         for (NDefinition def : NSearchCmd.of()
                 .addId(NConstants.Ids.NUTS_API)
-                .setInstallStatus(NInstallStatusFilters.of().byDeployed(true))
+                .setDefinitionFilter(NDefinitionFilters.of().byDeployed(true))
                 .getResultDefinitions()) {
             NOut.println(def);
         }
