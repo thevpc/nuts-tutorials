@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.thevpc.nuts.*;
-import net.thevpc.nuts.util.NMsg;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
 import net.thevpc.nuts.cmdline.NCmdLineContext;
@@ -22,7 +21,7 @@ public class CustomCliB implements NApplication {
 
     @Override
     public void run() {
-        NApp.of().processCmdLine(new NCmdLineRunner() {
+        NApp.of().runCmdLine(new NCmdLineRunner() {
             boolean noMoreOptions = false;
             boolean clean = false;
             List<String> params = new ArrayList<>();
