@@ -6,7 +6,6 @@ import java.util.List;
 import net.thevpc.nuts.*;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
-import net.thevpc.nuts.cmdline.NCmdLineContext;
 import net.thevpc.nuts.cmdline.NCmdLineRunner;
 
 /**
@@ -27,7 +26,7 @@ public class CustomCliB implements NApplication {
             List<String> params = new ArrayList<>();
 
             @Override
-            public boolean nextOption(NArg option, NCmdLine cmdLine, NCmdLineContext context) {
+            public boolean nextOption(NArg option, NCmdLine cmdLine) {
                 if (!noMoreOptions) {
                     return false;
                 }
@@ -45,13 +44,13 @@ public class CustomCliB implements NApplication {
             }
 
             @Override
-            public boolean nextNonOption(NArg nonOption, NCmdLine cmdLine, NCmdLineContext context) {
+            public boolean nextNonOption(NArg nonOption, NCmdLine cmdLine) {
                 params.add(cmdLine.next().get().toString());
                 return true;
             }
 
             @Override
-            public void run(NCmdLine cmdLine, NCmdLineContext context) {
+            public void run(NCmdLine cmdLine) {
                 if (clean) {
                     NOut.println("cleaned!");
                 }

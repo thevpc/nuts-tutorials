@@ -3,7 +3,6 @@ package net.thevpc.nuts.tutorial.naf.spring.installevents;
 import net.thevpc.nuts.*;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
-import net.thevpc.nuts.util.NLiteral;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -51,7 +50,7 @@ public class AppExample implements NApplication {
                     // your-app --some-string-option yourValue
 
                     a = cmd.nextEntry().get();
-                    if (a.isActive()) {
+                    if (a.isNonCommented()) {
                         someStringOption = a.getStringValue().get();
                     }
                     break;
@@ -62,7 +61,7 @@ public class AppExample implements NApplication {
                     // your-app --some-boolean-option
                     // your-app --!some-string-option
                     a = cmd.nextFlag().get();
-                    if (a.isActive()) {
+                    if (a.isNonCommented()) {
                         someBooleanOption = a.getBooleanValue().get();
                     }
                     break;

@@ -26,8 +26,8 @@ public class CustomCliD implements NApplication {
         List<String> others = new ArrayList<>();
         while (cmdLine.hasNext()) {
             if (!cmdLine.withFirst(
-                    c -> c.with("-o", "--option").consumeFlag((v, a) -> boolOption.set(v)),
-                    c -> c.with("-n", "--name").consumeEntry((v, a) -> stringOption.set(v))
+                    c -> c.with("-o", "--option").nextFlag((v, a) -> boolOption.set(v)),
+                    c -> c.with("-n", "--name").nextEntry((v, a) -> stringOption.set(v))
             )) {
                 if (cmdLine.isNextNonOption()) {
                     cmdLine.withNextEntry((v, a) -> stringOption.set(v));
