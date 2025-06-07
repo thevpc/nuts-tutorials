@@ -26,27 +26,26 @@ public class CustomCliB implements NApplication {
             List<String> params = new ArrayList<>();
 
             @Override
-            public boolean nextOption(NArg option, NCmdLine cmdLine) {
-                if (!noMoreOptions) {
-                    return false;
-                }
-                switch (option.key()) {
-                    case "-c":
-                    case "--clean": {
-                        NArg a = cmdLine.nextFlag().get();
-                        if (a.isEnabled()) {
-                            clean = a.getBooleanValue().get();
-                        }
-                        return true;
+            public boolean next(NArg arg, NCmdLine cmdLine) {
+                if(arg.isOption()){
+                    if (!noMoreOptions) {
+                        return false;
                     }
+                    switch (arg.key()) {
+                        case "-c":
+                        case "--clean": {
+                            NArg a = cmdLine.nextFlag().get();
+                            if (a.isEnabled()) {
+                                clean = a.getBooleanValue().get();
+                            }
+                            return true;
+                        }
+                    }
+                    return false;
+                }else{
+                    params.add(cmdLine.next().get().toString());
+                    return true;
                 }
-                return false;
-            }
-
-            @Override
-            public boolean nextNonOption(NArg nonOption, NCmdLine cmdLine) {
-                params.add(cmdLine.next().get().toString());
-                return true;
             }
 
             @Override

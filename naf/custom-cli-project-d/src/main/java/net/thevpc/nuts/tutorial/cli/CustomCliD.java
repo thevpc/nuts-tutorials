@@ -26,11 +26,11 @@ public class CustomCliD implements NApplication {
         List<String> others = new ArrayList<>();
         while (cmdLine.hasNext()) {
             if (!cmdLine.withFirst(
-                    c -> c.with("-o", "--option").nextFlag((v, a) -> boolOption.set(v)),
-                    c -> c.with("-n", "--name").nextEntry((v, a) -> stringOption.set(v))
+                    (arg, c) -> c.with("-o", "--option").nextFlag((v) -> boolOption.set(v.booleanValue())),
+                    (arg, c) -> c.with("-n", "--name").nextEntry((v) -> stringOption.set(v.stringValue()))
             )) {
                 if (cmdLine.isNextNonOption()) {
-                    cmdLine.withNextEntry((v, a) -> stringOption.set(v));
+                    cmdLine.withNextEntry((v) -> stringOption.set(v.stringValue()));
                 } else {
                     NSession.of().configureLast(cmdLine);
                 }

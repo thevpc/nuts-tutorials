@@ -32,12 +32,12 @@ public class CustomCliC implements NApplication {
                 switch (n.key()) {
                     case "-o":
                     case "--option": {
-                        cmdLine.withNextFlag((v, a) -> boolOption.set(v));
+                        cmdLine.withNextFlag((v) -> boolOption.set(v.booleanValue()));
                         break;
                     }
                     case "-n":
                     case "--name": {
-                        cmdLine.withNextEntry((v, a) -> stringOption.set(v));
+                        cmdLine.withNextEntry((v) -> stringOption.set(v.stringValue()));
                         break;
                     }
                     default: {

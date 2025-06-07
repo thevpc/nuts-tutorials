@@ -48,19 +48,19 @@ public class RemoteSelfCallApp implements NApplication {
         while (cmdLine.hasNext()) {
             switch (cmdLine.peek().get().key()) {
                 case "--host": {
-                    cmdLine.withNextEntry((v, a) -> {
-                        options.host = v;
+                    cmdLine.withNextEntry((v) -> {
+                        options.host = v.stringValue();
                     });
                     break;
                 }
                 case "--on-call-self": {
-                    cmdLine.withNextFlag((v, a) -> {
+                    cmdLine.withNextFlag((v) -> {
                         options.command = "on-call-self";
                     });
                     break;
                 }
                 case "--call-self": {
-                    cmdLine.withNextFlag((v, a) -> {
+                    cmdLine.withNextFlag((v) -> {
                         options.command = "call-self";
                     });
                     break;
