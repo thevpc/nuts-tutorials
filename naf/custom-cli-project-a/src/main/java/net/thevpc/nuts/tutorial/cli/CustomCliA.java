@@ -13,13 +13,14 @@ import net.thevpc.nuts.util.NMsg;
  *
  * @author vpc
  */
-public class CustomCliA implements NApplication {
+@NApp.Info
+public class CustomCliA {
 
     public static void main(String[] args) {
-        new CustomCliA().main(NMainArgs.ofExit(args));
+        NApp.builder(args).run();
     }
 
-    @Override
+    @NApp.Main
     public void run() {
         NCmdLine cmdLine = NApp.of().getCmdLine();
         boolean boolOption = false;
