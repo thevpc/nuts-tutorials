@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.Map;
 
 @SpringBootApplication
-public class AppExample implements NApplication {
+public class AppExample  {
     public static void main(String[] args) {
         SpringApplication.run(AppExample.class, args);
     }
 
-    @Override
+    @NApp.Installer
     public void onInstallApplication() {
         NOut.println("write your business logic that will be processed when the application is being installed here...");
     }
 
-    @Override
+    @NApp.Updater
     public void onUpdateApplication() {
         NOut.println("write your business logic that will be processed when the application is being updated/upgraded here...");
     }
 
-    @Override
+    @NApp.Uninstaller
     public void onUninstallApplication() {
         NOut.println("write your business logic that will be processed when the application is being uninstalled/removed here...");
     }
@@ -35,7 +35,7 @@ public class AppExample implements NApplication {
     /**
      * This method will be called to run you application or to process auto-complete arguments
      */
-    @Override
+    @NApp.Main
     public void run() {
         NCmdLine cmd = NApp.of().getCmdLine();
         NArg a;

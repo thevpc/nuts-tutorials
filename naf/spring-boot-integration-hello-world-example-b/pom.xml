@@ -7,10 +7,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>net.thevpc.nuts.tutorial</groupId>
-	<artifactId>spring-boot-integration-hello-world-example</artifactId>
+	<artifactId>spring-boot-integration-hello-world-example-b</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-        <name>Nuts Community Tutorial :: Spring Boot Integration Example</name>
-	<description>spring-boot-integration : Hello World Example Project</description>
+        <name>Nuts Community Tutorial :: Spring Boot Integration Example B</name>
+	<description>spring-boot-integration : Hello World Example Project B</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

@@ -12,13 +12,14 @@ import net.thevpc.nuts.util.NRef;
  *
  * @author vpc
  */
-public class CustomCliD implements NApplication {
+@NApp.Info
+public class CustomCliD  {
 
     public static void main(String[] args) {
-        new CustomCliD().main(NMainArgs.of(args));
+        NApp.builder(args).run();
     }
 
-    @Override
+    @NApp.Main
     public void run() {
         NCmdLine cmdLine = NApp.of().getCmdLine();
         NRef<Boolean> boolOption = NRef.of(false);

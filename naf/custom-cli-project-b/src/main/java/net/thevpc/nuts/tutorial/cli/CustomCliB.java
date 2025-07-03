@@ -12,13 +12,14 @@ import net.thevpc.nuts.cmdline.NCmdLineRunner;
  *
  * @author vpc
  */
-public class CustomCliB implements NApplication {
+@NApp.Info
+public class CustomCliB {
 
     public static void main(String[] args) {
-        new CustomCliB().main(NMainArgs.of(args));
+        NApp.builder(args).run();
     }
 
-    @Override
+    @NApp.Main
     public void run() {
         NApp.of().runCmdLine(new NCmdLineRunner() {
             boolean noMoreOptions = false;

@@ -1,0 +1,20 @@
+package net.thevpc.nuts.tutorial.naf.spring.helloworld;
+
+import net.thevpc.nuts.*;
+import net.thevpc.nuts.io.NPrintStream;
+import net.thevpc.nuts.util.NMsg;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@NApp.Info
+public class AppExample {
+    public static void main(String[] args) {
+        SpringApplication.run(AppExample.class, args);
+    }
+
+    @NApp.Main
+    public void run() {
+        NOut.println(NMsg.ofC("Hello ##World## from %s",NApp.of().getId().get()));
+    }
+}
