@@ -11,6 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+@NApp.Info
 @SpringBootApplication
 public class AppExample  {
     public static void main(String[] args) {
