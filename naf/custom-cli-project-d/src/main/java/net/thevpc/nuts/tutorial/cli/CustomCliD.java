@@ -9,11 +9,10 @@ import net.thevpc.nuts.cmdline.NCmdLine;
 import net.thevpc.nuts.util.NRef;
 
 /**
- *
  * @author vpc
  */
 @NApp.Info
-public class CustomCliD  {
+public class CustomCliD {
 
     public static void main(String[] args) {
         NApp.builder(args).run();
@@ -26,16 +25,12 @@ public class CustomCliD  {
         NRef<String> stringOption = NRef.ofNull();
         List<String> others = new ArrayList<>();
         while (cmdLine.hasNext()) {
-            if (!cmdLine.withFirst(
-                    (arg, c) -> c.with("-o", "--option").nextFlag((v) -> boolOption.set(v.booleanValue())),
-                    (arg, c) -> c.with("-n", "--name").nextEntry((v) -> stringOption.set(v.stringValue()))
-            )) {
-                if (cmdLine.isNextNonOption()) {
-                    cmdLine.withNextEntry((v) -> stringOption.set(v.stringValue()));
-                } else {
-                    NSession.of().configureLast(cmdLine);
-                }
-            }
+            cmdLine.selector()
+                    .with("-o", "--option").nextFlag((v) -> boolOption.set(v.booleanValue()))
+                    .with("-n", "--name").nextEntry((v) -> stringOption.set(v.stringValue()))
+                    .withNonOption().nextEntry((v) -> stringOption.set(v.stringValue()))
+                    .requireWithDefault()
+            ;
         }
         // test if application is running in exec mode
         // (and not in autoComplete mode)

@@ -49,21 +49,21 @@ public class RemoteSelfCallApp {
         while (cmdLine.hasNext()) {
             switch (cmdLine.peek().get().key()) {
                 case "--host": {
-                    cmdLine.withNextEntry((v) -> {
+                    cmdLine.selector().withNextEntry((v) -> {
                         options.host = v.stringValue();
-                    });
+                    }).require();
                     break;
                 }
                 case "--on-call-self": {
-                    cmdLine.withNextFlag((v) -> {
+                    cmdLine.selector().withNextFlag((v) -> {
                         options.command = "on-call-self";
-                    });
+                    }).require();
                     break;
                 }
                 case "--call-self": {
-                    cmdLine.withNextFlag((v) -> {
+                    cmdLine.selector().withNextFlag((v) -> {
                         options.command = "call-self";
-                    });
+                    }).require();
                     break;
                 }
                 default: {
