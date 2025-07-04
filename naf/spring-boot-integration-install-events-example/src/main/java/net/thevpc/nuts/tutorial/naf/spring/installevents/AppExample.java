@@ -69,7 +69,7 @@ public class AppExample  {
                 }
                 default: {
                     if (a.isNonOption()) {
-                        nonOptions.add(cmd.next().get().getImage());
+                        nonOptions.add(cmd.next().get().image());
                     } else {
                         // this is an unsupported options!
                         cmd.throwUnexpectedArgument();

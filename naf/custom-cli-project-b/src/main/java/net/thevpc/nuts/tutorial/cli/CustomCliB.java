@@ -7,6 +7,7 @@ import net.thevpc.nuts.*;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
 import net.thevpc.nuts.cmdline.NCmdLineRunner;
+import net.thevpc.nuts.util.NMsg;
 
 /**
  *
@@ -22,38 +23,22 @@ public class CustomCliB {
     @NApp.Main
     public void run() {
         NApp.of().runCmdLine(new NCmdLineRunner() {
-            boolean noMoreOptions = false;
-            boolean clean = false;
-            List<String> params = new ArrayList<>();
+            boolean boolOption = false;
+            String stringOption = null;
+            List<String> others = new ArrayList<>();
 
             @Override
             public boolean next(NArg arg, NCmdLine cmdLine) {
-                if(arg.isOption()){
-                    if (!noMoreOptions) {
-                        return false;
-                    }
-                    switch (arg.key()) {
-                        case "-c":
-                        case "--clean": {
-                            NArg a = cmdLine.nextFlag().get();
-                            if (a.isEnabled()) {
-                                clean = a.getBooleanValue().get();
-                            }
-                            return true;
-                        }
-                    }
-                    return false;
-                }else{
-                    params.add(cmdLine.next().get().toString());
-                    return true;
-                }
+                return cmdLine.matcher()
+                        .with("-o", "--option").matchFlag((v) -> boolOption=v.booleanValue())
+                        .with("-n", "--name").matchEntry((v) -> stringOption=v.stringValue())
+                        .withNonOption().matchAny((v) -> others.add(v.image()))
+                        .anyMatch();
             }
 
             @Override
             public void run(NCmdLine cmdLine) {
-                if (clean) {
-                    NOut.println("cleaned!");
-                }
+                NOut.println(NMsg.ofC("boolOption=%s stringOption=%s others=%s", boolOption, stringOption, others));
             }
         });
     }

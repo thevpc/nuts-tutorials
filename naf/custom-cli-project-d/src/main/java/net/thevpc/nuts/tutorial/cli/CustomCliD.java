@@ -28,7 +28,7 @@ public class CustomCliD {
             cmdLine.matcher()
                     .with("-o", "--option").matchFlag((v) -> boolOption.set(v.booleanValue()))
                     .with("-n", "--name").matchEntry((v) -> stringOption.set(v.stringValue()))
-                    .withNonOption().matchEntry((v) -> stringOption.set(v.stringValue()))
+                    .withNonOption().matchAny((v) -> stringOption.set(v.image()))
                     .requireWithDefault()
             ;
         }

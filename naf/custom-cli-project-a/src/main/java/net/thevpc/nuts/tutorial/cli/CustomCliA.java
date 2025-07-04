@@ -52,7 +52,7 @@ public class CustomCliA {
                     }
                 }
             } else {
-                others.add(cmdLine.next().get().getImage());
+                others.add(cmdLine.next().get().image());
             }
         }
         // test if application is running in exec mode
