@@ -33,12 +33,12 @@ public class CustomCliC {
                 switch (n.key()) {
                     case "-o":
                     case "--option": {
-                        cmdLine.selector().withNextFlag((v) -> boolOption.set(v.booleanValue())).require();
+                        cmdLine.matcher().matchFlag((v) -> boolOption.set(v.booleanValue())).require();
                         break;
                     }
                     case "-n":
                     case "--name": {
-                        cmdLine.selector().withNextEntry((v) -> stringOption.set(v.stringValue())).require();
+                        cmdLine.matcher().matchEntry((v) -> stringOption.set(v.stringValue())).require();
                         break;
                     }
                     default: {

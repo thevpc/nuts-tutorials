@@ -25,10 +25,10 @@ public class CustomCliD {
         NRef<String> stringOption = NRef.ofNull();
         List<String> others = new ArrayList<>();
         while (cmdLine.hasNext()) {
-            cmdLine.selector()
-                    .with("-o", "--option").nextFlag((v) -> boolOption.set(v.booleanValue()))
-                    .with("-n", "--name").nextEntry((v) -> stringOption.set(v.stringValue()))
-                    .withNonOption().nextEntry((v) -> stringOption.set(v.stringValue()))
+            cmdLine.matcher()
+                    .with("-o", "--option").matchFlag((v) -> boolOption.set(v.booleanValue()))
+                    .with("-n", "--name").matchEntry((v) -> stringOption.set(v.stringValue()))
+                    .withNonOption().matchEntry((v) -> stringOption.set(v.stringValue()))
                     .requireWithDefault()
             ;
         }
