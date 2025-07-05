@@ -91,7 +91,7 @@ public class RemoteSelfCallApp {
                     }
                     String e = NStringUtils.trim(
                             NExecCmd.of()
-                                    // host is ion the form
+                                    // connexion string is in the form
                                     // ssh://user@machine
                                     .setConnexionString(options.host)
                                     .setCommand(

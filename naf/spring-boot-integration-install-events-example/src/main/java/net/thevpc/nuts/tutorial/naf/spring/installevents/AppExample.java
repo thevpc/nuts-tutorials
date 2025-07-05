@@ -51,7 +51,7 @@ public class AppExample  {
                     // your-app --some-string-option yourValue
 
                     a = cmd.nextEntry().get();
-                    if (a.isNonCommented()) {
+                    if (a.isUncommented()) {
                         someStringOption = a.getStringValue().get();
                     }
                     break;
@@ -62,7 +62,7 @@ public class AppExample  {
                     // your-app --some-boolean-option
                     // your-app --!some-string-option
                     a = cmd.nextFlag().get();
-                    if (a.isNonCommented()) {
+                    if (a.isUncommented()) {
                         someBooleanOption = a.getBooleanValue().get();
                     }
                     break;

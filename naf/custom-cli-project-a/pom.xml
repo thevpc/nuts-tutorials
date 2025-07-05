@@ -3,8 +3,8 @@
     <groupId>net.thevpc.nuts.tutorial</groupId>
     <artifactId>custom-cli-project-a</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>Nuts Community Tutorial :: Custom CLI Example A</name>
+    <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -12,5 +12,6 @@
     </properties>
     <dependencies>
         <dependency><groupId>net.thevpc.nuts</groupId><artifactId>nuts</artifactId><version>0.8.6</version></dependency>
+        <dependency><groupId>net.thevpc.nuts</groupId><artifactId>nuts-lib</artifactId><version>0.8.6.0</version></dependency>
     </dependencies>
 </project>

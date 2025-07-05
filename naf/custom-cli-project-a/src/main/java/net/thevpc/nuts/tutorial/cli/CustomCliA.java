@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.thevpc.nuts.*;
-import net.thevpc.nuts.cmdline.NArg;
-import net.thevpc.nuts.cmdline.NCmdLine;
 import net.thevpc.nuts.util.NMsg;
+import net.thevpc.nuts.cmdline.NCmdLine;
+import net.thevpc.nuts.util.NRef;
 
 /**
- * Event Based Command line processing
- *
  * @author vpc
  */
 @NApp.Info
@@ -23,37 +21,16 @@ public class CustomCliA {
     @NApp.Main
     public void run() {
         NCmdLine cmdLine = NApp.of().getCmdLine();
-        boolean boolOption = false;
-        String stringOption = null;
+        NRef<Boolean> boolOption = NRef.of(false);
+        NRef<String> stringOption = NRef.ofNull();
         List<String> others = new ArrayList<>();
-        NArg a;
         while (cmdLine.hasNext()) {
-            a = cmdLine.peek().get();
-            if (a.isOption()) {
-                switch (a.key()) {
-                    case "-o":
-                    case "--option": {
-                        a = cmdLine.nextFlag().get();
-                        if (a.isEnabled()) {
-                            boolOption = a.getValue().asBoolean().get();
-                        }
-                        break;
-                    }
-                    case "-n":
-                    case "--name": {
-                        a = cmdLine.nextEntry().get();
-                        if (a.isEnabled()) {
-                            stringOption = a.getValue().asString().get();
-                        }
-                        break;
-                    }
-                    default: {
-                        NSession.of().configureLast(cmdLine);
-                    }
-                }
-            } else {
-                others.add(cmdLine.next().get().image());
-            }
+            cmdLine.matcher()
+                    .with("-o", "--option").matchFlag((v) -> boolOption.set(v.booleanValue()))
+                    .with("-n", "--name").matchEntry((v) -> stringOption.set(v.stringValue()))
+                    .withNonOption().matchAny((v) -> stringOption.set(v.image()))
+                    .requireWithDefault()
+            ;
         }
         // test if application is running in exec mode
         // (and not in autoComplete mode)

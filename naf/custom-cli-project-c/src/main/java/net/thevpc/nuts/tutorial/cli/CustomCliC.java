@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.thevpc.nuts.*;
-import net.thevpc.nuts.util.NMsg;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
-import net.thevpc.nuts.util.NRef;
+import net.thevpc.nuts.util.NMsg;
 
 /**
+ * Event Based Command line processing
  *
  * @author vpc
  */
@@ -23,22 +23,28 @@ public class CustomCliC {
     @NApp.Main
     public void run() {
         NCmdLine cmdLine = NApp.of().getCmdLine();
-        NRef<Boolean> boolOption = NRef.of(false);
-        NRef<String> stringOption = NRef.ofNull();
+        boolean boolOption = false;
+        String stringOption = null;
         List<String> others = new ArrayList<>();
-        NArg n;
+        NArg a;
         while (cmdLine.hasNext()) {
-            n = cmdLine.peek().get();
-            if (n.isOption()) {
-                switch (n.key()) {
+            a = cmdLine.peek().get();
+            if (a.isOption()) {
+                switch (a.key()) {
                     case "-o":
                     case "--option": {
-                        cmdLine.matcher().matchFlag((v) -> boolOption.set(v.booleanValue())).require();
+                        a = cmdLine.nextFlag().get();
+                        if (a.isUncommented()) {
+                            boolOption = a.getValue().asBoolean().get();
+                        }
                         break;
                     }
                     case "-n":
                     case "--name": {
-                        cmdLine.matcher().matchEntry((v) -> stringOption.set(v.stringValue())).require();
+                        a = cmdLine.nextEntry().get();
+                        if (a.isUncommented()) {
+                            stringOption = a.getValue().asString().get();
+                        }
                         break;
                     }
                     default: {
@@ -46,7 +52,7 @@ public class CustomCliC {
                     }
                 }
             } else {
-                others.add(cmdLine.next().get().toString());
+                others.add(cmdLine.next().get().image());
             }
         }
         // test if application is running in exec mode
