@@ -40,7 +40,7 @@ public class RemoteSelfCallApp {
         List<String> nonOptions = new ArrayList<>();
     }
 
-    @NApp.Main
+    @NApp.Runner
     public void run() {
         NSession session = NSession.of();
         NCmdLine cmdLine = NApp.of().getCmdLine();

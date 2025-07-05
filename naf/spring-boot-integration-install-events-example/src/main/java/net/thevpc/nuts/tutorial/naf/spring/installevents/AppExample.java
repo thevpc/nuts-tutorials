@@ -36,7 +36,7 @@ public class AppExample  {
     /**
      * This method will be called to run you application or to process auto-complete arguments
      */
-    @NApp.Main
+    @NApp.Runner
     public void run() {
         NCmdLine cmd = NApp.of().getCmdLine();
         NArg a;

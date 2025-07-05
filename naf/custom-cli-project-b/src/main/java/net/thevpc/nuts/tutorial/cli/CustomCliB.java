@@ -20,7 +20,7 @@ public class CustomCliB {
         NApp.builder(args).run();
     }
 
-    @NApp.Main
+    @NApp.Runner
     public void run() {
         NApp.of().runCmdLine(new NCmdLineRunner() {
             boolean boolOption = false;

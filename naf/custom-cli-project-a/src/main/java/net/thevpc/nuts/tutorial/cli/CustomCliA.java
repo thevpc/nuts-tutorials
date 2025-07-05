@@ -18,7 +18,7 @@ public class CustomCliA {
         NApp.builder(args).run();
     }
 
-    @NApp.Main
+    @NApp.Runner
     public void run() {
         NCmdLine cmdLine = NApp.of().getCmdLine();
         NRef<Boolean> boolOption = NRef.of(false);
