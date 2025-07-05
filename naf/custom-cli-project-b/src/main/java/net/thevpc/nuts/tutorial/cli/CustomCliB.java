@@ -13,7 +13,7 @@ import net.thevpc.nuts.util.NMsg;
  *
  * @author vpc
  */
-@NApp.Info
+@NApp.Definition
 public class CustomCliB {
 
     public static void main(String[] args) {

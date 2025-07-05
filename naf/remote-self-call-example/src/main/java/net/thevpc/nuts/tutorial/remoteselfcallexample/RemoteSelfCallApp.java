@@ -26,7 +26,7 @@ import java.util.List;
  *
  * @author vpc
  */
-@NApp.Info
+@NApp.Definition
 public class RemoteSelfCallApp {
 
     public static void main(String[] args) {

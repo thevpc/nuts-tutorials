@@ -11,7 +11,7 @@ import net.thevpc.nuts.util.NRef;
 /**
  * @author vpc
  */
-@NApp.Info
+@NApp.Definition
 public class CustomCliA {
 
     public static void main(String[] args) {
