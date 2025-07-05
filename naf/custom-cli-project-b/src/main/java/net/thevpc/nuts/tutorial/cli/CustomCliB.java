@@ -13,14 +13,14 @@ import net.thevpc.nuts.util.NMsg;
  *
  * @author vpc
  */
-@NApp.Definition
+@NAppDefinition
 public class CustomCliB {
 
     public static void main(String[] args) {
         NApp.builder(args).run();
     }
 
-    @NApp.Runner
+    @NAppRunner
     public void run() {
         NApp.of().runCmdLine(new NCmdLineRunner() {
             boolean boolOption = false;

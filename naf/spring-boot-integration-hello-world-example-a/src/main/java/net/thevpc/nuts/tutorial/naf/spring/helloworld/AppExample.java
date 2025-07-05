@@ -6,13 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@NApp.Definition
+@NAppDefinition
 public class AppExample {
     public static void main(String[] args) {
         SpringApplication.run(AppExample.class, args);
     }
 
-    @NApp.Runner
+    @NAppRunner
     public void run() {
         NOut.println(NMsg.ofC("Hello ##World## from %s",NApp.of().getId().get()));
     }

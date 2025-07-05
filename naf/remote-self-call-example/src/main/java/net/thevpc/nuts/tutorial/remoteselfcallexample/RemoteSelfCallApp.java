@@ -26,7 +26,7 @@ import java.util.List;
  *
  * @author vpc
  */
-@NApp.Definition
+@NAppDefinition
 public class RemoteSelfCallApp {
 
     public static void main(String[] args) {
@@ -40,7 +40,7 @@ public class RemoteSelfCallApp {
         List<String> nonOptions = new ArrayList<>();
     }
 
-    @NApp.Runner
+    @NAppRunner
     public void run() {
         NSession session = NSession.of();
         NCmdLine cmdLine = NApp.of().getCmdLine();

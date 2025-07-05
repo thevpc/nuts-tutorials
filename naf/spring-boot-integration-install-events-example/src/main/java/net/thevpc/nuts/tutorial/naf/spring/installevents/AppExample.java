@@ -11,24 +11,24 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@NApp.Definition
+@NAppDefinition
 @SpringBootApplication
 public class AppExample  {
     public static void main(String[] args) {
         SpringApplication.run(AppExample.class, args);
     }
 
-    @NApp.Installer
+    @NAppInstaller
     public void onInstallApplication() {
         NOut.println("write your business logic that will be processed when the application is being installed here...");
     }
 
-    @NApp.Updater
+    @NAppUpdater
     public void onUpdateApplication() {
         NOut.println("write your business logic that will be processed when the application is being updated/upgraded here...");
     }
 
-    @NApp.Uninstaller
+    @NAppUninstaller
     public void onUninstallApplication() {
         NOut.println("write your business logic that will be processed when the application is being uninstalled/removed here...");
     }
@@ -36,7 +36,7 @@ public class AppExample  {
     /**
      * This method will be called to run you application or to process auto-complete arguments
      */
-    @NApp.Runner
+    @NAppRunner
     public void run() {
         NCmdLine cmd = NApp.of().getCmdLine();
         NArg a;

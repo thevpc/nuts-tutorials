@@ -11,14 +11,14 @@ import net.thevpc.nuts.util.NRef;
 /**
  * @author vpc
  */
-@NApp.Definition
+@NAppDefinition
 public class CustomCliA {
 
     public static void main(String[] args) {
         NApp.builder(args).run();
     }
 
-    @NApp.Runner
+    @NAppRunner
     public void run() {
         NCmdLine cmdLine = NApp.of().getCmdLine();
         NRef<Boolean> boolOption = NRef.of(false);
