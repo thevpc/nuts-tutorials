@@ -29,7 +29,7 @@ public class CustomCliA {
                     .with("-o", "--option").matchFlag((v) -> boolOption.set(v.booleanValue()))
                     .with("-n", "--name").matchEntry((v) -> stringOption.set(v.stringValue()))
                     .withNonOption().matchAny((v) -> stringOption.set(v.image()))
-                    .requireWithDefault()
+                    .requireDefaults()
             ;
         }
         // test if application is running in exec mode
