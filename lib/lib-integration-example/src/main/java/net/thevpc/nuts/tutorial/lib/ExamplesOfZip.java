@@ -20,7 +20,7 @@ public class ExamplesOfZip {
         if (example.isDirectory()) {
             NCompress.of()
                     .addSource(example)
-                    .setTarget(example.resolveSibling(example.getNameParts(NPathExtensionType.SHORT).getBaseName() + ".zip"))
+                    .setTarget(example.resolveSibling(example.nameParts(NPathExtensionType.SHORT).getBaseName() + ".zip"))
                     .setPackaging("zip")
                     .run();
         }
