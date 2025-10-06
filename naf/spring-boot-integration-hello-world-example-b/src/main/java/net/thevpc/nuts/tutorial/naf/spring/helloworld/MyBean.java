@@ -1,8 +1,8 @@
 package net.thevpc.nuts.tutorial.naf.spring.helloworld;
 
 
-import net.thevpc.nuts.NSession;
-import net.thevpc.nuts.NWorkspace;
+import net.thevpc.nuts.core.NSession;
+import net.thevpc.nuts.core.NWorkspace;
 import net.thevpc.nuts.io.NPrintStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
