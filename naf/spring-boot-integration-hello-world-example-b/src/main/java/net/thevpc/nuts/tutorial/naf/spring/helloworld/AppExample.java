@@ -1,7 +1,7 @@
 package net.thevpc.nuts.tutorial.naf.spring.helloworld;
 
-import net.thevpc.nuts.*;
-import net.thevpc.nuts.io.NPrintStream;
+import net.thevpc.nuts.app.NApplication;
+import net.thevpc.nuts.io.NOut;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
