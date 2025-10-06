@@ -1,6 +1,10 @@
 package net.thevpc.nuts.tutorial.lib;
 
-import net.thevpc.nuts.*;
+import net.thevpc.nuts.artifact.NDefinition;
+import net.thevpc.nuts.artifact.NDefinitionFilters;
+import net.thevpc.nuts.command.NSearchCmd;
+import net.thevpc.nuts.core.NConstants;
+import net.thevpc.nuts.io.NOut;
 
 public class ExamplesOfSearch {
 
