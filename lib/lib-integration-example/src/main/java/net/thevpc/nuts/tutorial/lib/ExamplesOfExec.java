@@ -3,7 +3,7 @@ package net.thevpc.nuts.tutorial.lib;
 import net.thevpc.nuts.command.NExecCmd;
 import net.thevpc.nuts.io.NExecInput;
 import net.thevpc.nuts.io.NOut;
-import net.thevpc.nuts.util.NMsg;
+import net.thevpc.nuts.text.NMsg;
 
 public class ExamplesOfExec {
     public void executeAll() {
