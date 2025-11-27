@@ -97,9 +97,9 @@ public class RemoteSelfCallApp {
                     }
                     String e = NStringUtils.trim(
                             NExecCmd.of()
-                                    // connexion string is in the form
+                                    // connection string is in the form
                                     // ssh://user@machine
-                                    .setConnexionString(options.host)
+                                    .setConnectionString(options.host)
                                     .setCommand(
                                             NStringUtils.toStringOrEmpty(NApp.of().getId().orNull()),
                                             "--on-call-self"
