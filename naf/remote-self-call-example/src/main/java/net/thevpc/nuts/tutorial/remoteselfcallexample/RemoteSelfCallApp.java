@@ -5,10 +5,11 @@ import net.thevpc.nuts.app.NAppDefinition;
 import net.thevpc.nuts.app.NAppRunner;
 import net.thevpc.nuts.cmdline.NCmdLine;
 
-import net.thevpc.nuts.command.NExecCmd;
+import net.thevpc.nuts.command.NExec;
 import net.thevpc.nuts.core.NSession;
 import net.thevpc.nuts.core.NWorkspace;
 import net.thevpc.nuts.io.NOut;
+import net.thevpc.nuts.platform.NEnv;
 import net.thevpc.nuts.util.NBlankable;
 import net.thevpc.nuts.text.NMsg;
 import net.thevpc.nuts.util.NStringUtils;
@@ -96,7 +97,7 @@ public class RemoteSelfCallApp {
                         cmdLine.throwMissingArgument("--host");
                     }
                     String e = NStringUtils.trim(
-                            NExecCmd.of()
+                            NExec.of()
                                     // connection string is in the form
                                     // ssh://user@machine
                                     .setConnectionString(options.host)
@@ -104,7 +105,7 @@ public class RemoteSelfCallApp {
                                             NStringUtils.toStringOrEmpty(NApp.of().getId().orNull()),
                                             "--on-call-self"
                                     )
-                                    .addCommand("from=" + NWorkspace.of().getHostName())
+                                    .addCommand("from=" + NEnv.of().getHostName())
                                     .addCommand(options.nonOptions)
                                     .failFast()
                                     .getGrabbedAllString()
@@ -125,7 +126,7 @@ public class RemoteSelfCallApp {
     }
 
     private void log(NMsg m) {
-        String hostName = NWorkspace.of().getHostName();
+        String hostName = NEnv.of().getHostName();
         NOut.println(NMsg.ofC("[%s] %s", hostName, m));
     }
 
