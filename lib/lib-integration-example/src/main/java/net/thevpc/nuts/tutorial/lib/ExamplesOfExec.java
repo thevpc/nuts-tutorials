@@ -17,7 +17,7 @@ public class ExamplesOfExec {
                 .addCommand("ls", "-l")
                 .system()
                 .run()
-                .getResultCode();
+                .exitCode();
         NOut.println(NMsg.ofC("result was %s", result));
     }
 
@@ -50,7 +50,7 @@ public class ExamplesOfExec {
                 .addExecutorOptions("--!sudo-prompt")
                 .system()
                 .sudo()
-                .setIn(NExecInput.ofString("sudoPassword\n"))
+                .in(NExecInput.ofString("sudoPassword\n"))
                 .getGrabbedAllString();
         NOut.println(NMsg.ofC("result was %s", result));
     }
