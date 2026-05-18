@@ -23,7 +23,7 @@ public class CustomCliA {
 
     @NAppRunner
     public void run() {
-        NCmdLine cmdLine = NApp.of().getCmdLine();
+        NCmdLine cmdLine = NApp.of().cmdLine();
         NRef<Boolean> boolOption = NRef.of(false);
         NRef<String> stringOption = NRef.ofNull();
         List<String> others = new ArrayList<>();

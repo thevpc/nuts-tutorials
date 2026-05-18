@@ -39,7 +39,7 @@ public class AppExample  {
      */
     @NAppRunner
     public void run() {
-        NCmdLine cmd = NApp.of().getCmdLine();
+        NCmdLine cmd = NApp.of().cmdLine();
         NArg a;
         String someStringOption = null;
         Boolean someBooleanOption = null;

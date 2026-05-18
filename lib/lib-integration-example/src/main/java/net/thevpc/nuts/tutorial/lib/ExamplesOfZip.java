@@ -20,8 +20,8 @@ public class ExamplesOfZip {
         if (example.isDirectory()) {
             NCompress.of()
                     .addSource(example)
-                    .setTarget(example.resolveSibling(example.nameParts(NPathExtensionType.SHORT).getBaseName() + ".zip"))
-                    .setPackaging("zip")
+                    .target(example.resolveSibling(example.nameParts(NPathExtensionType.SHORT).getBaseName() + ".zip"))
+                    .packaging("zip")
                     .run();
         }
     }
@@ -33,7 +33,7 @@ public class ExamplesOfZip {
         if (example.isRegularFile()) {
             NOut.println(NMsg.ofC("Listing %s", example));
             NUncompress.of()
-                    .setSource(example)
+                    .source(example)
                     .visit(new NUncompressVisitor() {
                         @Override
                         public boolean visitFolder(String path) {
@@ -49,8 +49,8 @@ public class ExamplesOfZip {
                     .run();
             NOut.println(NMsg.ofC("Uncompressing %s", example));
             NUncompress.of()
-                    .setSource(example)
-                    .setTarget(example.resolveSibling("example-uncompressed"))
+                    .source(example)
+                    .target(example.resolveSibling("example-uncompressed"))
                     .run();
         }
     }

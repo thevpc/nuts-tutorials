@@ -26,7 +26,7 @@ public class CustomCliC {
 
     @NAppRunner
     public void run() {
-        NCmdLine cmdLine = NApp.of().getCmdLine();
+        NCmdLine cmdLine = NApp.of().cmdLine();
         boolean boolOption = false;
         String stringOption = null;
         List<String> others = new ArrayList<>();

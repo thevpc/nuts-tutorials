@@ -17,6 +17,6 @@ public class AppExample {
 
     @NAppRunner
     public void run() {
-        NOut.println(NMsg.ofC("Hello ##World## from %s", NApp.of().getId().get()));
+        NOut.println(NMsg.ofC("Hello ##World## from %s", NApp.of().id().get()));
     }
 }

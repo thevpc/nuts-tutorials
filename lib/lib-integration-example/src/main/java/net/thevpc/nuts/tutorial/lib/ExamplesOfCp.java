@@ -30,7 +30,7 @@ public class ExamplesOfCp {
         NCp.of()
                 .from(NPath.of("http://www.google.com"))
                 .to(NPath.of("example.txt"))
-                .setProgressMonitor(new NProgressListener() {
+                .progressMonitor(new NProgressListener() {
                     @Override
                     public boolean onProgress(NProgressEvent event) {
                         NOut.println(NMsg.ofC("some progress %s %s",

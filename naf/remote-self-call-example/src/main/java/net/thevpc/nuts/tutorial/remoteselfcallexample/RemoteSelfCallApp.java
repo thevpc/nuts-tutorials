@@ -49,7 +49,7 @@ public class RemoteSelfCallApp {
     @NAppRunner
     public void run() {
         NSession session = NSession.of();
-        NCmdLine cmdLine = NApp.of().getCmdLine();
+        NCmdLine cmdLine = NApp.of().cmdLine();
         log(NMsg.ofC("%s", cmdLine));
         Options options = new Options();
         while (cmdLine.hasNext()) {
@@ -101,7 +101,7 @@ public class RemoteSelfCallApp {
                                     // ssh://user@machine
                                     .connectionString(options.host)
                                     .setCommand(
-                                            NStringUtils.toStringOrEmpty(NApp.of().getId().orNull()),
+                                            NStringUtils.toStringOrEmpty(NApp.of().id().orNull()),
                                             "--on-call-self"
                                     )
                                     .addCommand("from=" + NEnv.of().getHostName())
