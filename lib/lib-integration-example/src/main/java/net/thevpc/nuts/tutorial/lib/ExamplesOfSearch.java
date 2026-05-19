@@ -16,7 +16,7 @@ public class ExamplesOfSearch {
         NOut.println("Example of ## Search ##");
         for (NDefinition def : NSearch.of()
                 .addId(NConstants.Ids.NUTS_API)
-                .setDefinitionFilter(NDefinitionFilters.of().byDeployed(true))
+                .definitionFilter(NDefinitionFilters.of().byDeployed(true))
                 .getResultDefinitions()) {
             NOut.println(def);
         }

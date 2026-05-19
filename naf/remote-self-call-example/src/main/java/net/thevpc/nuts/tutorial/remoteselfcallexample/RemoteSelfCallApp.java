@@ -100,7 +100,7 @@ public class RemoteSelfCallApp {
                                     // connection string is in the form
                                     // ssh://user@machine
                                     .connectionString(options.host)
-                                    .setCommand(
+                                    .command(
                                             NStringUtils.toStringOrEmpty(NApp.of().id().orNull()),
                                             "--on-call-self"
                                     )
