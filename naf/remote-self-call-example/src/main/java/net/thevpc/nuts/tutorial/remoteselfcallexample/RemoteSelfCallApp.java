@@ -104,7 +104,7 @@ public class RemoteSelfCallApp {
                                             NStringUtils.toStringOrEmpty(NApp.of().id().orNull()),
                                             "--on-call-self"
                                     )
-                                    .addCommand("from=" + NEnv.of().getHostName())
+                                    .addCommand("from=" + NEnv.of().hostName())
                                     .addCommand(options.nonOptions)
                                     .failFast(true)
                                     .getGrabbedAllString()
@@ -125,7 +125,7 @@ public class RemoteSelfCallApp {
     }
 
     private void log(NMsg m) {
-        String hostName = NEnv.of().getHostName();
+        String hostName = NEnv.of().hostName();
         NOut.println(NMsg.ofC("[%s] %s", hostName, m));
     }
 
