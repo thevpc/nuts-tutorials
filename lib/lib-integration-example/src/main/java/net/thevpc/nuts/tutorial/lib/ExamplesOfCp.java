@@ -34,8 +34,8 @@ public class ExamplesOfCp {
                     @Override
                     public boolean onProgress(NProgressEvent event) {
                         NOut.println(NMsg.ofC("some progress %s %s",
-                                event.isIndeterminate() ? "?" : new DecimalFormat("0.00%").format(event.getProgress())
-                                , event.getMessage()));
+                                event.isIndeterminate() ? "?" : new DecimalFormat("0.00%").format(event.progress())
+                                , event.message()));
                         return true;
                     }
                 })

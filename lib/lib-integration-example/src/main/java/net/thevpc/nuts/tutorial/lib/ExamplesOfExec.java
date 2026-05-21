@@ -27,7 +27,7 @@ public class ExamplesOfExec {
                 .addCommand("ls", "-l")
                 .system()
                 .run()
-                .getGrabbedAllString();
+                .grabbedAll();
         NOut.println(NMsg.ofC("result was %s", result));
     }
 
@@ -36,7 +36,7 @@ public class ExamplesOfExec {
                 .connectionString("ssh://remoteUserName:remoteUserPassword@192.168.1.98")
                 .addCommand("hostname", "-I")
                 .system()
-                .getGrabbedAllString();
+                .grabbedAll();
         NOut.println(result);
         NOut.println(NMsg.ofC("result was %s", result));
 
@@ -51,7 +51,7 @@ public class ExamplesOfExec {
                 .system()
                 .sudo()
                 .in(NExecInput.ofString("sudoPassword\n"))
-                .getGrabbedAllString();
+                .grabbedAll();
         NOut.println(NMsg.ofC("result was %s", result));
     }
 }

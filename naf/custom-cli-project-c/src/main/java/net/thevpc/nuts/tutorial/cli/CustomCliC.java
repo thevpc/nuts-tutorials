@@ -39,7 +39,7 @@ public class CustomCliC {
                     case "--option": {
                         a = cmdLine.nextFlag().get();
                         if (a.isUncommented()) {
-                            boolOption = a.getValue().asBoolean().get();
+                            boolOption = a.toLiteral().asBoolean().get();
                         }
                         break;
                     }
@@ -47,7 +47,7 @@ public class CustomCliC {
                     case "--name": {
                         a = cmdLine.nextEntry().get();
                         if (a.isUncommented()) {
-                            stringOption = a.getValue().asString().get();
+                            stringOption = a.toLiteral().asString().get();
                         }
                         break;
                     }

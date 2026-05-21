@@ -107,7 +107,7 @@ public class RemoteSelfCallApp {
                                     .addCommand("from=" + NEnv.of().hostName())
                                     .addCommand(options.nonOptions)
                                     .failFast(true)
-                                    .getGrabbedAllString()
+                                    .grabbedAll()
                     );
                     log(NMsg.ofC("received"));
                     NOut.println(e);
