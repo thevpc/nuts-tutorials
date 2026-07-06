@@ -95,7 +95,7 @@ public class RemoteSelfCallApp {
                     if (NBlankable.isBlank(options.host)) {
                         cmdLine.throwMissingArgument("--host");
                     }
-                    String e = NStringUtils.trim(
+                    String e = NStringUtils.strip(
                             NExec.of()
                                     // connection string is in the form
                                     // ssh://user@machine
