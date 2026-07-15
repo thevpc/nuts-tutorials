@@ -35,12 +35,8 @@ public class CustomCliA {
                     .requireDefaults()
             ;
         }
-        // test if application is running in exec mode
-        // (and not in autoComplete mode)
-        if (cmdLine.isExecMode()) {
-            //do the good staff here
-            NOut.println(NMsg.ofC("boolOption=%s stringOption=%s others=%s", boolOption, stringOption, others));
-        }
+        //do the good staff here
+        NOut.println(NMsg.ofC("boolOption=%s stringOption=%s others=%s", boolOption, stringOption, others));
     }
 
 }
