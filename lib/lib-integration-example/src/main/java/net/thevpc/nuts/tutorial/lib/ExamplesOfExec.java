@@ -14,7 +14,7 @@ public class ExamplesOfExec {
     public void executeSomeCommand() {
         NOut.println("Example of ## Exec ##");
         int result = NExec.of()
-                .addCommand("ls", "-l")
+                .command("ls", "-l")
                 .system()
                 .run()
                 .exitCode();
@@ -24,7 +24,7 @@ public class ExamplesOfExec {
     public void executeSomeCommandRedirect() {
         NOut.println("Example of ## Exec with String Grab ##");
         String result = NExec.of()
-                .addCommand("ls", "-l")
+                .command("ls", "-l")
                 .system()
                 .run()
                 .grabbedAll();
@@ -34,7 +34,7 @@ public class ExamplesOfExec {
     public void executeSshCommand() {
         String result = NExec.of()
                 .connectionString("ssh://remoteUserName:remoteUserPassword@192.168.1.98")
-                .addCommand("hostname", "-I")
+                .command("hostname", "-I")
                 .system()
                 .grabbedAll();
         NOut.println(result);
@@ -46,8 +46,8 @@ public class ExamplesOfExec {
         NOut.println("Example of ## Exec ssh command ##");
         String result = NExec.of()
                 .connectionString("ssh://remoteUserName:remoteUserPassword@192.168.1.98")
-                .addCommand("hostname", "-I")
-                .addExecutorOptions("--!sudo-prompt")
+                .command("hostname", "-I")
+                .executorOptions("--!sudo-prompt")
                 .system()
                 .sudo()
                 .in(NExecInput.ofString("sudoPassword\n"))

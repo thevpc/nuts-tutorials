@@ -104,8 +104,8 @@ public class RemoteSelfCallApp {
                                             NStringUtils.toStringOrEmpty(NApp.of().id().orNull()),
                                             "--on-call-self"
                                     )
-                                    .addCommand("from=" + NEnv.of().hostName())
-                                    .addCommand(options.nonOptions)
+                                    .command("from=" + NEnv.of().hostName())
+                                    .command(options.nonOptions)
                                     .failFast(true)
                                     .grabbedAll()
                     );
