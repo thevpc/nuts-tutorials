@@ -1,7 +1,7 @@
 package net.thevpc.nuts.tutorial.lib;
 
 import net.thevpc.nuts.artifact.NDefinition;
-import net.thevpc.nuts.artifact.NDefinitionFilters;
+import net.thevpc.nuts.artifact.NDefinitionFilter;
 import net.thevpc.nuts.command.NSearch;
 import net.thevpc.nuts.core.NConstants;
 import net.thevpc.nuts.io.NOut;
@@ -16,7 +16,7 @@ public class ExamplesOfSearch {
         NOut.println("Example of ## Search ##");
         for (NDefinition def : NSearch.of()
                 .addId(NConstants.Ids.NUTS_API)
-                .definitionFilter(NDefinitionFilters.of().byDeployed(true))
+                .definitionFilter(NDefinitionFilter.ofDeployed(true))
                 .getResultDefinitions()) {
             NOut.println(def);
         }
