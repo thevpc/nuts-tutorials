@@ -33,9 +33,9 @@ public class CustomCliB {
             @Override
             public boolean next(NArg arg, NCmdLine cmdLine) {
                 return cmdLine.matcher()
-                        .with("-o", "--option").matchFlag((v) -> boolOption=v.booleanValue())
-                        .with("-n", "--name").matchEntry((v) -> stringOption=v.stringValue())
-                        .withNonOption().matchAny((v) -> others.add(v.image()))
+                        .when("-o", "--option").asFlag((v) -> boolOption=v.booleanValue())
+                        .when("-n", "--name").asEntry((v) -> stringOption=v.stringValue())
+                        .whenNonOption().asArg((v) -> others.add(v.image()))
                         .anyMatch();
             }
 

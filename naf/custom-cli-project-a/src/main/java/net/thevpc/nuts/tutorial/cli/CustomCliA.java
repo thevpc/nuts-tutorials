@@ -29,10 +29,11 @@ public class CustomCliA {
         List<String> others = new ArrayList<>();
         while (cmdLine.hasNext()) {
             cmdLine.matcher()
-                    .with("-o", "--option").matchFlag((v) -> boolOption.set(v.booleanValue()))
-                    .with("-n", "--name").matchEntry((v) -> stringOption.set(v.stringValue()))
-                    .withNonOption().matchAny((v) -> stringOption.set(v.image()))
-                    .requireDefaults()
+                    .when("-o", "--option").asFlag((v) -> boolOption.set(v.booleanValue()))
+                    .when("-n", "--name").asEntry((v) -> stringOption.set(v.stringValue()))
+                    .whenNonOption().asArg((v) -> stringOption.set(v.image()))
+                    .withDefaults()
+                    .require()
             ;
         }
         //do the good staff here
