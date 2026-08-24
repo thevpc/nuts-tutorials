@@ -12,24 +12,24 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@NAppDefinition
+@NApp
 @SpringBootApplication
 public class AppExample  {
     public static void main(String[] args) {
         SpringApplication.run(AppExample.class, args);
     }
 
-    @NAppInstaller
+    @NAppInstall
     public void onInstallApplication() {
         NOut.println("write your business logic that will be processed when the application is being installed here...");
     }
 
-    @NAppUpdater
+    @NAppUpdate
     public void onUpdateApplication() {
         NOut.println("write your business logic that will be processed when the application is being updated/upgraded here...");
     }
 
-    @NAppUninstaller
+    @NAppUninstall
     public void onUninstallApplication() {
         NOut.println("write your business logic that will be processed when the application is being uninstalled/removed here...");
     }
@@ -37,9 +37,9 @@ public class AppExample  {
     /**
      * This method will be called to run you application or to process auto-complete arguments
      */
-    @NAppRunner
+    @NAppRun
     public void run() {
-        NCmdLine cmd = NApp.of().cmdLine();
+        NCmdLine cmd = NApplication.of().cmdLine();
         NArg a;
         String someStringOption = null;
         Boolean someBooleanOption = null;
@@ -83,7 +83,7 @@ public class AppExample  {
             //cmd.next("--some-string-option").get(session);
         }
         //the application can be run in one of 'execMode' and 'autoCompleteMode' modes
-        if (NApp.of().isExecMode()) {
+        if (NApplication.of().isExecMode()) {
             //only run if in execMode
             //just display the options as an example of execution
             Map<String, Object> result = new LinkedHashMap<>();

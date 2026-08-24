@@ -3,9 +3,9 @@ package net.thevpc.nuts.tutorial.cli;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.thevpc.nuts.app.NApplication;
 import net.thevpc.nuts.app.NApp;
-import net.thevpc.nuts.app.NAppDefinition;
-import net.thevpc.nuts.app.NAppRunner;
+import net.thevpc.nuts.app.NAppRun;
 import net.thevpc.nuts.cmdline.NArg;
 import net.thevpc.nuts.cmdline.NCmdLine;
 import net.thevpc.nuts.core.NSession;
@@ -17,16 +17,16 @@ import net.thevpc.nuts.text.NMsg;
  *
  * @author vpc
  */
-@NAppDefinition
+@NApp
 public class CustomCliC {
 
     public static void main(String[] args) {
-        NApp.builder(args).run();
+        NApplication.builder(args).run();
     }
 
-    @NAppRunner
+    @NAppRun
     public void run() {
-        NCmdLine cmdLine = NApp.of().cmdLine();
+        NCmdLine cmdLine = NApplication.of().cmdLine();
         boolean boolOption = false;
         String stringOption = null;
         List<String> others = new ArrayList<>();

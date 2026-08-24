@@ -1,12 +1,12 @@
 package net.thevpc.nuts.tutorial.naf.spring.helloworld;
 
-import net.thevpc.nuts.app.NApplication;
+import net.thevpc.nuts.app.NApplicationHandler;
 import net.thevpc.nuts.io.NOut;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AppExample implements NApplication {
+public class AppExample implements NApplicationHandler {
     public static void main(String[] args) {
         SpringApplication.run(AppExample.class, args);
     }

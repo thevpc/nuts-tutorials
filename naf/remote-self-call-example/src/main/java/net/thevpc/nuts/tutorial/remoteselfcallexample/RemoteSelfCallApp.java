@@ -1,8 +1,8 @@
 package net.thevpc.nuts.tutorial.remoteselfcallexample;
 
+import net.thevpc.nuts.app.NApplication;
 import net.thevpc.nuts.app.NApp;
-import net.thevpc.nuts.app.NAppDefinition;
-import net.thevpc.nuts.app.NAppRunner;
+import net.thevpc.nuts.app.NAppRun;
 import net.thevpc.nuts.cmdline.NCmdLine;
 
 import net.thevpc.nuts.command.NExec;
@@ -32,11 +32,11 @@ import java.util.List;
  *
  * @author vpc
  */
-@NAppDefinition
+@NApp
 public class RemoteSelfCallApp {
 
     public static void main(String[] args) {
-        NApp.builder(args).run();
+        NApplication.builder(args).run();
     }
 
     private static class Options {
@@ -46,10 +46,10 @@ public class RemoteSelfCallApp {
         List<String> nonOptions = new ArrayList<>();
     }
 
-    @NAppRunner
+    @NAppRun
     public void run() {
         NSession session = NSession.of();
-        NCmdLine cmdLine = NApp.of().cmdLine();
+        NCmdLine cmdLine = NApplication.of().cmdLine();
         log(NMsg.ofC("%s", cmdLine));
         Options options = new Options();
         while (cmdLine.hasNext()) {
@@ -101,7 +101,7 @@ public class RemoteSelfCallApp {
                                     // ssh://user@machine
                                     .connectionString(options.host)
                                     .command(
-                                            NStringUtils.toStringOrEmpty(NApp.of().id().orNull()),
+                                            NStringUtils.toStringOrEmpty(NApplication.of().id().orNull()),
                                             "--on-call-self"
                                     )
                                     .command("from=" + NEnv.of().hostName())
