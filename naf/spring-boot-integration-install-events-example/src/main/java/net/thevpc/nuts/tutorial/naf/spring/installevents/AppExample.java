@@ -14,7 +14,7 @@ import java.util.Map;
 
 @NApp
 @SpringBootApplication
-public class AppExample  {
+public class AppExample {
     public static void main(String[] args) {
         SpringApplication.run(AppExample.class, args);
     }
@@ -34,62 +34,59 @@ public class AppExample  {
         NOut.println("write your business logic that will be processed when the application is being uninstalled/removed here...");
     }
 
+    private static class Options {
+        String someStringOption = null;
+        Boolean someBooleanOption = null;
+        List<String> nonOptions = new ArrayList<>();
+    }
+
+    private Options parseCmdLine(NCmdLine cmdLine) {
+        Options o = new Options();
+        cmdLine.matcher()
+                // example of calls
+                // your-app --some-string-option=yourValue
+                // your-app --some-string-option yourValue
+                .when("--some-string-option").asEntry(a -> o.someStringOption = a.stringValue())
+                // example of calls
+                // your-app --some-boolean-option=true
+                // your-app --some-boolean-option
+                // your-app --!some-string-option
+                .when("--some-boolean-option").asEntry(a -> o.someBooleanOption = a.booleanValue())
+                .whenNonOption().asArg(a -> o.nonOptions.add(a.image()))
+                .withDefaults()
+                .requireAll();
+        return o;
+    }
+
+    /**
+     * This method will be called to run to complete shell args
+     */
+    @NAppComplete
+    public void complete() {
+        NCmdLine cmdLine = NApplication.of().cmdLine();
+        parseCmdLine(cmdLine);
+        cmdLine.printCompleteResult();
+    }
+
     /**
      * This method will be called to run you application or to process auto-complete arguments
      */
     @NAppRun
     public void run() {
-        NCmdLine cmd = NApplication.of().cmdLine();
-        NArg a;
-        String someStringOption = null;
-        Boolean someBooleanOption = null;
-        List<String> nonOptions = new ArrayList<>();
-        while ((a = cmd.peek().orNull()) != null) {
-            switch (a.key()) {
-                case "--some-string-option": {
-                    // example of calls
-                    // your-app --some-string-option=yourValue
-                    // your-app --some-string-option yourValue
-
-                    a = cmd.nextEntry().get();
-                    if (a.isUncommented()) {
-                        someStringOption = a.getStringValue().get();
-                    }
-                    break;
-                }
-                case "--some-boolean-option": {
-                    // example of calls
-                    // your-app --some-boolean-option=true
-                    // your-app --some-boolean-option
-                    // your-app --!some-string-option
-                    a = cmd.nextFlag().get();
-                    if (a.isUncommented()) {
-                        someBooleanOption = a.getBooleanValue().get();
-                    }
-                    break;
-                }
-                default: {
-                    if (a.isNonOption()) {
-                        nonOptions.add(cmd.next().get().image());
-                    } else {
-                        // this is an unsupported options!
-                        cmd.throwUnexpectedArgument();
-                    }
-                }
-            }
-        }
+        NCmdLine cmdLine = NApplication.of().cmdLine();
+        Options o=parseCmdLine(cmdLine);
         // this will fire an exception if no option is provided!
-        if (someStringOption == null) {
-            //cmd.next("--some-string-option").get(session);
+        if (o.someStringOption == null) {
+            cmdLine.throwMissingArgument("--some-string-option");
         }
         //the application can be run in one of 'execMode' and 'autoCompleteMode' modes
         if (NApplication.of().isExecMode()) {
             //only run if in execMode
             //just display the options as an example of execution
             Map<String, Object> result = new LinkedHashMap<>();
-            result.put("someStringOption", someStringOption);
-            result.put("someBooleanOption", someBooleanOption);
-            result.put("nonOptions", nonOptions);
+            result.put("someStringOption", o.someStringOption);
+            result.put("someBooleanOption", o.someBooleanOption);
+            result.put("nonOptions", o.nonOptions);
             NOut.println(result);
         }
     }

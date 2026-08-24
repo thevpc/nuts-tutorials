@@ -3,6 +3,7 @@ package net.thevpc.nuts.tutorial.cli;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.thevpc.nuts.app.NAppComplete;
 import net.thevpc.nuts.app.NApplication;
 import net.thevpc.nuts.app.NApp;
 import net.thevpc.nuts.app.NAppRun;
@@ -16,17 +17,16 @@ import net.thevpc.nuts.util.NRef;
  */
 @NApp
 public class CustomCliA {
+    private final NRef<Boolean> boolOption = NRef.of(false);
+    private final NRef<String> stringOption = NRef.ofNull();
+    private final List<String> others = new ArrayList<>();
 
     public static void main(String[] args) {
         NApplication.builder(args).run();
     }
 
-    @NAppRun
-    public void run() {
+    private NCmdLine parseCmdLine() {
         NCmdLine cmdLine = NApplication.of().cmdLine();
-        NRef<Boolean> boolOption = NRef.of(false);
-        NRef<String> stringOption = NRef.ofNull();
-        List<String> others = new ArrayList<>();
         while (cmdLine.hasNext()) {
             cmdLine.matcher()
                     .when("-o", "--option").asFlag((v) -> boolOption.set(v.booleanValue()))
@@ -36,6 +36,17 @@ public class CustomCliA {
                     .require()
             ;
         }
+        return cmdLine;
+    }
+
+    @NAppComplete
+    public void complete() {
+        parseCmdLine().printCompleteResult();
+    }
+
+    @NAppRun
+    public void run() {
+        parseCmdLine();
         //do the good staff here
         NOut.println(NMsg.ofC("boolOption=%s stringOption=%s others=%s", boolOption, stringOption, others));
     }
