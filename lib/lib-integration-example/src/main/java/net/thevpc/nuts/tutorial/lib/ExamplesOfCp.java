@@ -21,7 +21,7 @@ public class ExamplesOfCp {
         NCp.of()
                 .from(NPath.of("http://www.google.com"))
                 .to(NPath.of("example.txt"))
-                .addOptions(NPathOption.LOG, NPathOption.TRACE)
+                .options(NPathOption.LOG, NPathOption.TRACE)
                 .run();
     }
 
