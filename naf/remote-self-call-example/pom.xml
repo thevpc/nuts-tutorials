@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.thevpc.nuts.tutorial</groupId>
     <artifactId>remote-self-call-example</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0.0</version>
     <packaging>jar</packaging>
     <name>Nuts Community Tutorial :: Remote Self Call Example Project</name>
     <properties>

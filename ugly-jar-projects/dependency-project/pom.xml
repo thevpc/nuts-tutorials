@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.thevpc.nuts.tutorial</groupId>
     <artifactId>dependency-project</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0.0</version>
     <packaging>jar</packaging>
     <name>Nuts Community Tutorial Documentation :: Ugly :: dependency</name>
     <properties>
@@ -18,7 +18,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.2</version>
                 <configuration>
                     <archive>
                         <manifest>
