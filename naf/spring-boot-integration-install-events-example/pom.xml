@@ -8,14 +8,14 @@
     </parent>
     <groupId>net.thevpc.nuts.tutorial</groupId>
     <artifactId>nuts-spring-boot-integration-install-events-example</artifactId>
-    <version>1.0.0.0</version>
+    <version>1.1.0.0</version>
     <name>Nuts Community Tutorial :: Spring Boot Install Events Example</name>
     <description>nuts-spring-boot-integration-install-events-example</description>
     <properties>
     </properties>
     <dependencies>
-        <dependency><groupId>net.thevpc.nuts</groupId><artifactId>nuts</artifactId><version>1.0.0</version></dependency>
-        <dependency><groupId>net.thevpc.nuts</groupId><artifactId>nuts-spring-boot</artifactId><version>1.0.0.0</version></dependency>
+        <dependency><groupId>net.thevpc.nuts</groupId><artifactId>nuts</artifactId><version>1.1.0</version></dependency>
+        <dependency><groupId>net.thevpc.nuts</groupId><artifactId>nuts-spring-boot</artifactId><version>1.1.0.0</version></dependency>
         <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter</artifactId></dependency>
         <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><optional>true</optional></dependency>
         <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
